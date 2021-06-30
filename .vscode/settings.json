@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/26cb39da-a54e-435c-8879-90b3bb305d65/resourceGroups/mochifunctionapp/providers/Microsoft.Web/sites/ApparelManagerAPI",
+    "appService.deploySubpath": "."
+}

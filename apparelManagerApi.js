@@ -21,9 +21,10 @@ ApparelManager.get('/apparel/:apparelId/client', (req, res) => {
     const apparelId= req.params.apparelId;
 
     registry.get(apparelId, function (err,device,_connect) {
-        if(err!=null) 
+        if(err!=null) {
             console.error('Apparel '+ apparelId +' do not exist ');;
             res.json('device not found',409);
+        }
         else {
             registry.getTwin(device.deviceId,function(err,twin) {
                 if(twin.properties.desired.client==undefined){
