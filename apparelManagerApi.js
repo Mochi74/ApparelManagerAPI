@@ -30,7 +30,7 @@ ApparelManager.get('/apparel/:apparelId/client', (req, res) => {
                 if(twin.properties.desired.client==undefined){
                     res.json("no client assigned",520);
                 }
-                res.json('{apparel:'+device.deviceId+',client:' + twin.deviceIdtwin.properties.desired.client+ '}',200);
+                res.json('{apparel:'+device.deviceId+',client:' + twin.properties.desired.client+ '}',200);
                  
             })
         }
