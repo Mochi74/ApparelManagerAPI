@@ -1,15 +1,15 @@
 'use strict';
 
 const express = require('express');
-const ApparelManager = express();
-const port = 3000;
+const app = express();
+const port = 4000;
 
 var registry; 
 var iothub = require('azure-iothub');
 var connectionString = process.env.IOTHUB_CONNECTION_STRING;
 
 
-ApparelManager.listen(port, () => {
+app.listen(port, () => {
     console.log(`Apparel manager app listening on port ${port}!`);
     registry = iothub.Registry.fromConnectionString(connectionString);
     console.log(`Apparel manager connected to IoT hub!`);
@@ -17,7 +17,7 @@ ApparelManager.listen(port, () => {
 
 
 
-ApparelManager.get('/apparel/:apparelId/client', (req, res) => {
+app.get('/apparel/:apparelId/client', (req, res) => {
     const apparelId= req.params.apparelId;
 
     registry.get(apparelId, function (err,device,_connect) {
@@ -40,7 +40,7 @@ ApparelManager.get('/apparel/:apparelId/client', (req, res) => {
 }); 
 
 
-ApparelManager.post('/apparel/:apparelId/client/:clientId', (req, res) => {
+app.post('/apparel/:apparelId/client/:clientId', (req, res) => {
 // post create apparel and tag apparel twin with client
     const apparelId= req.params.apparelId;
     const clientId= req.params.clientId;
@@ -109,7 +109,7 @@ ApparelManager.post('/apparel/:apparelId/client/:clientId', (req, res) => {
 
 
 
-ApparelManager.put('/apparel/:apparelId/client/:clientId', (req, res) => {
+app.put('/apparel/:apparelId/client/:clientId', (req, res) => {
     const apparelId= req.params.apparelId;
     const clientId= req.params.clientId;
 
@@ -153,7 +153,7 @@ ApparelManager.put('/apparel/:apparelId/client/:clientId', (req, res) => {
     });   
 });
 
-ApparelManager.delete('/apparel/:apparelId', (req, res) => {
+app.delete('/apparel/:apparelId', (req, res) => {
     const apparelId= req.params.apparelId;
     
     // check if device  exist
@@ -176,3 +176,5 @@ ApparelManager.delete('/apparel/:apparelId', (req, res) => {
         }            
     });   
 });
+
+module.exports = app;

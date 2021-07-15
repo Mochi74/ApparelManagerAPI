@@ -1,4 +1,4 @@
 {
-    "appService.deploySubpath": ".",
-    "appService.defaultWebAppToDeploy": "None"
+    "appService.defaultWebAppToDeploy": "/subscriptions/538f7534-8cde-4716-b41c-efa2ad5b552b/resourceGroups/TestIOT/providers/Microsoft.Web/sites/apparelapi",
+    "appService.deploySubpath": "."
 }
